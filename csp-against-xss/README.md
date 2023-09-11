@@ -12,5 +12,5 @@ Other languages and frameworks likely support similar libraries or middleware pa
 Follow these steps to run the demo:
 
 * `npm install`
-* `node index.js`
+* `node server.js`
 * Opening [http://localhost:3000](http://localhost:3000) should give you a page saying "Welcome to this CSP demo. Try one of the demo endpoints"

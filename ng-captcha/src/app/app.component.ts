@@ -1,13 +1,23 @@
 import { Component } from '@angular/core';
-import { NgForm } from "@angular/forms";
+import { FormsModule, NgForm } from "@angular/forms";
+import { RecaptchaFormsModule, RecaptchaModule } from "ng-recaptcha";
+import { NgIf } from "@angular/common";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  standalone: true,
+  imports: [
+    FormsModule,
+    RecaptchaModule,
+    RecaptchaFormsModule,
+    NgIf
+  ],
+  styleUrls: [ './app.component.scss' ]
 })
 export class AppComponent {
-  token: string|undefined;
+  token: string | undefined;
+
   public send(form: NgForm): void {
     if (form.invalid) {
       for (const control of Object.keys(form.controls)) {
