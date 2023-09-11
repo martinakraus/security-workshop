@@ -10,7 +10,7 @@
 
 - Update the CSP in order to block the inline scripting - use the `expressCspHeader`-middleware.
 - Update the CSP in order to allow this inline scripting securely (consider CSP3 SHA-256 hash syntax)
-- Hints : To generate the hash of the script content, use this  [online tool](report-uri.io/home/hash): (beware of spaces and carriage returns...)
+- Hints : To generate the hash of the script content, use this  [online tool](https://report-uri.com/home/hash): (beware of spaces and carriage returns...)
 
 
 ## Hints
@@ -28,3 +28,4 @@ const csp_hashes = {
 ```
 
 
+[Official Documentation](https://content-security-policy.com/hash/)

@@ -54,12 +54,12 @@ app.get("/basics", expressCspHeader(csp_basics), (req, res) => {
 // Define the CSP policy for this endpoint
 const csp_hashes = {
     directives: {
-        'script-src': ["'self'"]
+        'script-src': ["'self'", "'sha256-hR9T49uyHNM6Gl14iFigC1D52XD5NRR9kaaBx4gYLrc='"]
     }
 }
 
 // Serve the endpoint with CSP enabled
-app.get("/hashes", (req, res) => {
+app.get("/hashes", expressCspHeader(csp_hashes), (req, res) => {
     // Render the EJS page with the data
     res.render(`${PAGES}/list-names-with-count`, { data: data });
 });
@@ -73,7 +73,7 @@ app.get("/hashes", (req, res) => {
 // Define the CSP policy for this endpoint
 const csp_nonces = {
     directives: {
-        'script-src': [] // NONCE refers to a freshly calculated nonce
+        'script-src': [NONCE] // NONCE refers to a freshly calculated nonce
     }
 }
 
@@ -81,20 +81,13 @@ const csp_nonces = {
 app.get("/nonces", expressCspHeader(csp_nonces), (req, res) => {
     // Render the EJS page with the data
     // The middleware exposes the calculated nonce on req.nonce
-    res.render(`${PAGES}/list-names-with-count-nonces`, { data: data });
+    res.render(`${PAGES}/list-names-with-count-nonces`, { data: data, nonce: req.nonce });
 });
 
 
-/************************
- * Demo: Strict-Dynamic *
- ************************/
-
-// Define the CSP policy for this endpoint
-const csp_strictdynamic = {
-    directives: {
-        'script-src': [NONCE, "'strict-dynamic'"]
-    }
-}
+/****************
+ * Task 3: Trusted-Types *
+ ****************/
 
 
 // Serve the endpoint with CSP enabled
@@ -103,7 +96,6 @@ app.get("/trusted-types" , (req, res) => {
     res.set('Content-Security-Policy', 'require-trusted-types-for \'script\'');
     res.render(`${PAGES}/trusted-names`, { data: data });
 });
-
 
 
 /***********************
