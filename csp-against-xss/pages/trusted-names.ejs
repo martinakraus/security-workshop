@@ -15,11 +15,8 @@
 
         const escaped = escapeHTMLPolicy.createHTML('<img src=x onerror=alert(1)>');
 
-        console.log(escaped instanceof TrustedHTML);  // true
         document.getElementById('martina').innerHTML = escaped;
     }
-
-
 </script>
 <script src="js/legitimate.js"></script>
 </body>

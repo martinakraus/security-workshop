@@ -1,12 +1,12 @@
-# CSP Level 2: Trusted Types
+# CSP Level 2: Nonces
 
 ## Preperation
 
 1. Open the application `csp-against-xss`
 2. Run `npm i`
-3. Page/ Template to this task: `trusted-names.ejs`
+3. Page/ Template to this task: `list-names-with-count-nonces.ejs`
 
-## Task: Use CSP Trusted Types to secure your app against inline scripting
+## Task: Use CSP to secure your app against inline scripting
 
 - Update the CSP in order to block the inline scripting - use the `expressCspHeader`-middleware.
 - Update the CSP in order to allow this inline scripting securely (import the `NONCE` module from `express-csp-header`) and include it inside your CSP-Policy
@@ -26,4 +26,4 @@ app.get("/nonces", expressCspHeader(csp_nonces), (req, res) => {
 
 ```
 
-
+[Official Documentation](https://content-security-policy.com/nonce/)
