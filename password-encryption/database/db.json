@@ -1,15 +1,7 @@
 {
   "users": [
     {
-      "username": "admin@bookmonkey.api",
-      "password": "$2a$10$Evsbmwpt5JIsDb3hSRklq.u7zapUWPCNPl8EFE1igm9B1bqroGfSq"
-    },
-    {
-      "username": "admin2@bookmonkey.api",
-      "password": "$2a$10$d1XObyB2FFCBM6kyxQ6oMOA7ksm2VLSZ0la0Ax7jQtWreOZDPnmv6"
-    },
-    {
-      "username": "martina",
+      "username": "martina_11",
       "password": "$2b$10$r2paKngFisvIqxvGyPymKOnJWyWzWEjkmBJhskzXPg9jbPEX5g5Qe"
     }
   ]

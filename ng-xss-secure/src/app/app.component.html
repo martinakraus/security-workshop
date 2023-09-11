@@ -1,0 +1,10 @@
+<h1>Hallo {{ title }}</h1>
+
+<div>Insert untrusted HTML here:
+  <div [innerHTML]="dangerousHtmlSnippet"></div>
+</div>
+
+<h4>An untrusted URL:</h4>
+<p><a [href]="dangerousUrl">Click me</a></p>
+<h4>A trusted URL:</h4>
+<p><a [href]="trustedUrl">Click me</a></p>

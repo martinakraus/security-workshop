@@ -2,13 +2,15 @@ import express from 'express';
 import bcrypt from 'bcrypt';
 import fs from "fs";
 
-const app = express();
+const usersFilePath = './database/db.json';
 const port = 3000;
+
+const app = express();
+
 
 // Middleware zum Parsen von JSON-Anfragen
 app.use(express.json());
 
-const usersFilePath = './database/db.json';
 
 // Registrierung eines Benutzers
 app.post('/register', async (req, res) => {
@@ -25,7 +27,6 @@ app.post('/register', async (req, res) => {
 
         // Passwort hashen und Benutzer erstellen
         const saltRounds = 10;
-
         const hashedPassword = await bcrypt.hash(password, saltRounds);
 
         const newUser = { username, password: hashedPassword };
