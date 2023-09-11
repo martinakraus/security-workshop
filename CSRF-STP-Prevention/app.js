@@ -29,10 +29,8 @@ const tokenStore = {};
 
 // Startseite mit Formular zum Einloggen
 app.get('/', csrfProtection, (req, res) => {
-    const sessionId = req.cookies['connect.sid'];
-    const token = req.csrfToken();
-    tokenStore[sessionId] = token;
-    res.render('index', { csrfToken: token });
+    // ToDo generate csrfToken and store it inside the tokenStore
+    res.render('index');
 });
 
 // Erfolgseite nach erfolgreichem Einloggen
@@ -50,10 +48,7 @@ app.post('/login', csrfProtection, (req, res) => {
     const { username, password, _csrf } = req.body;
 
     // Überprüfe, ob das CSRF-Token korrekt ist
-    const sessionId = req.cookies['connect.sid'];
-    if (_csrf !== tokenStore[sessionId]) {
-        return res.redirect('/error');
-    }
+    // ToDo compare both tokens and render error-Page if they dont match
 
     // Suche nach Benutzer in der Mock-Datenbank
     const user = users.find(u => u.username === username && u.password === password);

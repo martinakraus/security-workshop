@@ -27,9 +27,9 @@ app.post('/register', async (req, res) => {
 
         // Passwort hashen und Benutzer erstellen
         const saltRounds = 10;
-        const hashedPassword = await bcrypt.hash(password, saltRounds);
+        // ToDo create a hashed passwords by using the hash function from bcrypt
 
-        const newUser = { username, password: hashedPassword };
+        const newUser = { username, password };
         usersData.users.push(newUser);
 
         fs.writeFileSync(usersFilePath, JSON.stringify(usersData, null, 2));
@@ -56,7 +56,9 @@ app.post('/login', async (req, res) => {
         }
 
         // Passwort überprüfen
-        const passwordMatch = await bcrypt.compare(password, user.password);
+        // ToDo compare hashed passwords here by using the compare function from bcrypt
+
+        const passwordMatch = password === user.password;
 
         if (!passwordMatch) {
             return res.status(401).json({ message: 'Ungültige Anmeldeinformationen.' });

@@ -11,10 +11,5 @@ export class AppComponent {
   title = 'ng-secure';
   dangerousHtmlSnippet = 'Template <script>alert("0wned")</script> <b>Syntax</b>';
   dangerousUrl = 'javascript:alert("Hi there")';
-  constructor(private domSanitizer: DomSanitizer) {
-  }
-
-  trustedUrl = this.domSanitizer.bypassSecurityTrustUrl(this.dangerousUrl);
-  trustedHtml = this.domSanitizer.bypassSecurityTrustHtml(this.dangerousHtmlSnippet);
-
+  // ToDo inject domSanitizer and sanitize dangerous code
 }
