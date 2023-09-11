@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
 
 // Setup the data for the page
 const data = [
-    `John`, 
+    `John`,
     `Annie<img src="none" onerror="console.warn('evil 1')">`,
     `Martina<script>console.warn('evil 2')</script>`
 ];
@@ -35,12 +35,12 @@ const data = [
 // Define the CSP policy for this endpoint
 const csp_basics = {
     directives: {
-        'script-src': []
+        'script-src': ["'self'"]
     }
 }
 
 // Serve the endpoint with CSP enabled
-app.get("/basics", (req, res) => {
+app.get("/basics", expressCspHeader(csp_basics), (req, res) => {
     // Render the EJS page with the data
     res.render(`${PAGES}/list-names`, { data: data });
 });
@@ -54,12 +54,12 @@ app.get("/basics", (req, res) => {
 // Define the CSP policy for this endpoint
 const csp_hashes = {
     directives: {
-        'script-src': ["'self'"]
+        'script-src': ["'self'", "'sha256-hR9T49uyHNM6Gl14iFigC1D52XD5NRR9kaaBx4gYLrc='"]
     }
 }
 
 // Serve the endpoint with CSP enabled
-app.get("/hashes", (req, res) => {
+app.get("/hashes", expressCspHeader(csp_hashes), (req, res) => {
     // Render the EJS page with the data
     res.render(`${PAGES}/list-names-with-count`, { data: data });
 });
@@ -73,15 +73,15 @@ app.get("/hashes", (req, res) => {
 // Define the CSP policy for this endpoint
 const csp_nonces = {
     directives: {
-        'script-src': [] // NONCE refers to a freshly calculated nonce
+        'script-src': [NONCE] // NONCE refers to a freshly calculated nonce
     }
 }
 
 // Serve the endpoint with CSP enabled
-app.get("/nonces", (req, res) => {
+app.get("/nonces", expressCspHeader(csp_nonces), (req, res) => {
     // Render the EJS page with the data
     // The middleware exposes the calculated nonce on req.nonce
-    res.render(`${PAGES}/list-names-with-count-nonces`, { data: data });
+    res.render(`${PAGES}/list-names-with-count-nonces`, { data: data, nonce: req.nonce });
 });
 
 
@@ -106,7 +106,7 @@ app.get("/trusted-types" , (req, res) => {
 const csp_universal = {
     directives: {
         'script-src': [
-            NONCE, "'strict-dynamic'", 
+            NONCE, "'strict-dynamic'",
             "'unsafe-inline'", "http:", "https:",
             "'unsafe-eval'"
         ],
@@ -117,5 +117,5 @@ const csp_universal = {
 
 // Start the app
 app.listen(port, () => {
-  console.log(`CSP demo available at http://localhost:${port}`);
+    console.log(`CSP demo available at http://localhost:${port}`);
 });
