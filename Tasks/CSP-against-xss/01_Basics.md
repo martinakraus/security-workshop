@@ -1,4 +1,4 @@
-# CSP Level 2: Hashes
+# CSP Level 2: Basics
 
 ## Preperation
 
