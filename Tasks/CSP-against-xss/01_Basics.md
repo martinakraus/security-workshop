@@ -18,7 +18,7 @@
 ```typescript
 const { expressCspHeader } = require('express-csp-header');
 
-const csp_hashes = {
+const csp_basics = {
     directives: {
         'script-src': ["'self'"]
     }
