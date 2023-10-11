@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule, NgForm } from "@angular/forms";
 import { RecaptchaFormsModule, RecaptchaModule } from "ng-recaptcha";
 import { NgIf } from "@angular/common";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ import { NgIf } from "@angular/common";
   styleUrls: [ './app.component.scss' ]
 })
 export class AppComponent {
+  httpClient = inject(HttpClient);
   token: string | undefined;
 
   public send(form: NgForm): void {
@@ -26,6 +28,7 @@ export class AppComponent {
       return;
     }
 
-    console.debug(`Token [${this.token}] generated`);
+    this.httpClient.post('http://localhost:3000/verify-recaptcha', { token: this.token }
+    ).subscribe();
   }
 }
