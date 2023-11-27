@@ -1,5 +1,4 @@
 import express from 'express';
-import bcrypt from 'bcrypt';
 import fs from "fs";
 
 const usersFilePath = './database/db.json';
@@ -26,6 +25,9 @@ app.post('/register', async (req, res) => {
         }
 
         // Passwort hashen und Benutzer erstellen
+        // Die Anzahl der "Salt-Rounds" gibt an, wie oft der Salting- und Hashing-Prozess wiederholt wird.
+        // Ein häufiger empfohlener Wert für die Anzahl der Salt-Rounds liegt zwischen 10 und 12,
+
         const saltRounds = 10;
         // ToDo create a hashed passwords by using the hash function from bcrypt
 
