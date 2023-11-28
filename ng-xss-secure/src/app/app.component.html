@@ -3,6 +3,9 @@
 <div>Insert untrusted HTML here:
   <div [innerHTML]="dangerousHtmlSnippet"></div>
 </div>
+<div>Insert trusted HTML here:
+  <div [innerHTML]="trustedHtml"></div>
+</div>
 
 <h4>An untrusted URL:</h4>
 <p><a [href]="dangerousUrl">Click me</a></p>
