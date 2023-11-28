@@ -10,10 +10,10 @@
 <script>
     if (window.trustedTypes && trustedTypes.createPolicy) { // Feature testing
         const escapeHTMLPolicy = trustedTypes.createPolicy('myEscapePolicy', {
-            createHTML: string => string.replace(/\</g, '&lt;')
+
         });
 
-        const escaped = escapeHTMLPolicy.createHTML('<img src=x onerror=alert(1)>');
+        const escaped = '<img src=x onerror=alert(1)>'
 
         document.getElementById('martina').innerHTML = escaped;
     }
