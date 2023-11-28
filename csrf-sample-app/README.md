@@ -18,7 +18,7 @@ This project uses the following technologies:
 3. To launch the web application, run the following command:
 
    ```shell
-   node server.js
+   npm start
    ```
 
 4. Point your browser to [http://localhost:3000](http://localhost:3000) to access the sample web app.
@@ -26,7 +26,7 @@ This project uses the following technologies:
 5. To launch the attacker website, run the following command:
 
    ```shell
-   node attacker-server.js
+   npm run start-attacker
    ```
 
 6. Point your browser to [http://localhost:4000](http://localhost:4000/) to access the attacker website

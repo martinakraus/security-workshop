@@ -1,16 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const csrf = require('csurf');
 const ejs = require('ejs');
-
+const csrf = require('csurf');
 const app = express();
 const port = 3000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-
-// Initialisiere CSRF-Schutz
 const csrfProtection = csrf({ cookie: true });
 
 // Setze die Engine für die Vorlagen
@@ -25,12 +22,11 @@ const users = [
 // Mock-Token-Speicher
 const tokenStore = {};
 
-// Routen
 
 // Startseite mit Formular zum Einloggen
 app.get('/', csrfProtection, (req, res) => {
     // ToDo generate csrfToken and store it inside the tokenStore
-    res.render('index');
+    res.render('index', { csrfToken: '' });
 });
 
 // Erfolgseite nach erfolgreichem Einloggen
@@ -44,12 +40,11 @@ app.get('/error', (req, res) => {
 });
 
 // Einloggen
-app.post('/login', csrfProtection, (req, res) => {
+app.post('/login', (req, res) => {
     const { username, password, _csrf } = req.body;
 
     // Überprüfe, ob das CSRF-Token korrekt ist
     // ToDo compare both tokens and render error-Page if they dont match
-
     // Suche nach Benutzer in der Mock-Datenbank
     const user = users.find(u => u.username === username && u.password === password);
 

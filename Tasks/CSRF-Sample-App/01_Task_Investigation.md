@@ -9,6 +9,5 @@
 ## Task: Investigation
 
 - How did this attack happen?
-- Figure out all vulnerabilities for this application
 - How does a good prevention look like for this example?
 
