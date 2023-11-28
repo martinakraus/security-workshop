@@ -4,6 +4,7 @@
 
 1. Open the application `password-encryption`
 2. Run `npm i`
+3. To start the Server run `npm start`
 
 ## Task: Implement Register Route
 
