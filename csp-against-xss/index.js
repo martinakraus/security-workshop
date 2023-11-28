@@ -35,12 +35,12 @@ const data = [
 // Define the CSP policy for this endpoint
 const csp_basics = {
     directives: {
-        'script-src': []
+
     }
 }
 
 // Serve the endpoint with CSP enabled
-app.get("/basics", (req, res) => {
+app.get("/basics", expressCspHeader(csp_basics), (req, res) => {
     // Render the EJS page with the data
     res.render(`${PAGES}/list-names`, { data: data });
 });
@@ -59,7 +59,7 @@ const csp_hashes = {
 }
 
 // Serve the endpoint with CSP enabled
-app.get("/hashes", (req, res) => {
+app.get("/hashes", expressCspHeader(csp_hashes), (req, res) => {
     // Render the EJS page with the data
     res.render(`${PAGES}/list-names-with-count`, { data: data });
 });
@@ -73,7 +73,7 @@ app.get("/hashes", (req, res) => {
 // Define the CSP policy for this endpoint
 const csp_nonces = {
     directives: {
-        'script-src': [] // NONCE refers to a freshly calculated nonce
+        'script-src': [ ] // NONCE refers to a freshly calculated nonce
     }
 }
 

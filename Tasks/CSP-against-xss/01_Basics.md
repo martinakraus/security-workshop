@@ -24,6 +24,10 @@ const csp_basics = {
     }
 }
 
+app.get("/basics", expressCspHeader(csp_basics), (req, res) => {
+    //...
+});
+
 ```
 
 

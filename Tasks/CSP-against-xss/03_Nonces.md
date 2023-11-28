@@ -18,6 +18,13 @@
 ```typescript
 const { expressCspHeader } = require('express-csp-header');
 
+const csp_nonces = {
+    directives: {
+        'script-src': [ NONCE ] // NONCE refers to a freshly calculated nonce
+    }
+}
+
+
 app.get("/nonces", expressCspHeader(csp_nonces), (req, res) => {
     // Render the EJS page with the data
     // The middleware exposes the calculated nonce on req.nonce
