@@ -1,4 +1,4 @@
-# CSP Trused Types
+# CSP Trusted Types
 
 ## Preperation
 
