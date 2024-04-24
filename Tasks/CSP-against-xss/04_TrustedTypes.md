@@ -1,4 +1,4 @@
-# CSP Level 2: Nonces
+# CSP Trused Types
 
 ## Preperation
 
