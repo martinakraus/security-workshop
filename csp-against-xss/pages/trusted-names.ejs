@@ -7,15 +7,12 @@
     <li>Lenny</li>
     <li>Raupy</li>
 </ul>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.2.7/purify.min.js"></script>
 <script>
-    if (window.trustedTypes && trustedTypes.createPolicy) { // Feature testing
-        const escapeHTMLPolicy = trustedTypes.createPolicy('myEscapePolicy', {
+    document.getElementById('martina').innerHTML = `<img src=x onerror=alert(1)>`;
 
-        });
-
-        const escaped = '<img src=x onerror=alert(1)>'
-
-        document.getElementById('martina').innerHTML = escaped;
+    // Creating custom Policy
+   if (window.trustedTypes && trustedTypes.createPolicy) { // Feature testing
     }
 </script>
 <script src="js/legitimate.js"></script>
