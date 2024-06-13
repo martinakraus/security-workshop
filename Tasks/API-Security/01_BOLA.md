@@ -1,12 +1,5 @@
 # Broken Object Level Authorization
 
-## Preperation
-
-1. Follow QuickStart Guide for crAPI: https://github.com/OWASP/crAPI#quickstart-guide
-2. Visit http://localhost:8888 and sign up.
-Note: All emails are sent to mailhog service by default and can be checked on http://localhost:8025 
-You can change the smtp configuration if required however all emails with domain example.com will still go to mailhog.
-
 ## Task: Access mechanic reports of other users
 
 1. Login to the application from http://localhost:8888/login
