@@ -10,30 +10,23 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.2.7/purify.min.js"></script>
 <script>
     // document.getElementById('martina').innerHTML = `<img src=x onerror=alert(1)>`;
+    let dangerousText =  `<img src=x onerror=alert(1)>`;
+    let trustedTypeText = dangerousText;
 
+    // Using DOMpurify
+    if (window.trustedTypes && trustedTypes.createPolicy) { // Feature testing
+        trustedTypeText = DOMPurify.sanitize(dangerousText , {RETURN_TRUSTED_TYPE: true})
+    }
     // Creating custom Policy
-
     /* if (window.trustedTypes && trustedTypes.createPolicy) { // Feature testing
          const escapeHTMLPolicy = trustedTypes.createPolicy('myEscapePolicy', {
             createHTML: text => text.replace(/\</g, '&lt;')
          });
 
-         const escaped = escapeHTMLPolicy.createHTML('<img src=x onerror=alert(1)>')
-
-         document.getElementById('martina').innerHTML = escaped;
+         trustedTypeText = escapeHTMLPolicy.createHTML(dangerousText)
      }*/
 
-    // Using DOMpurify
-
-    if (window.trustedTypes && trustedTypes.createPolicy) { // Feature testing
-        const escapeHTMLPolicy =  trustedTypes.createPolicy('DOMPurify', {
-            createHTML: string => DOMPurify.sanitize(string, {RETURN_TRUSTED_TYPE: true})
-        });
-
-        const escaped = escapeHTMLPolicy.createHTML('<img src=x onerror=alert(1)>')
-
-        document.getElementById('martina').innerHTML = escaped;
-    }
+    document.getElementById('martina').innerHTML = trustedTypeText
 </script>
 <script src="js/legitimate.js"></script>
 </body>
