@@ -10,12 +10,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.2.7/purify.min.js"></script>
 <script>
     let dangerousText =  `<img src=x onerror=alert(1)>`;
+    let trustedTypeText = dangerousText;
 
     // Creating a trusted type
    if (window.trustedTypes && trustedTypes.createPolicy) { // Feature testing
+       // ToDo Use DOMPurifier to create a trusted type
+       trustedTypeText = dangerousText;
    }
 
-    document.getElementById('martina').innerHTML = dangerousText;
+    document.getElementById('martina').innerHTML = trustedTypeText;
 </script>
 <script src="js/legitimate.js"></script>
 </body>
