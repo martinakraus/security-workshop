@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ng-captcha:build:production"
+              "buildTarget": "ng-captcha:build:production"
             },
             "development": {
-              "browserTarget": "ng-captcha:build:development"
+              "buildTarget": "ng-captcha:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ng-captcha:build"
+            "buildTarget": "ng-captcha:build"
           }
         },
         "test": {
