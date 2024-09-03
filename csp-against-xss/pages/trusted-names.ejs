@@ -9,11 +9,13 @@
 </ul>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.2.7/purify.min.js"></script>
 <script>
-    document.getElementById('martina').innerHTML = `<img src=x onerror=alert(1)>`;
+    let dangerousText =  `<img src=x onerror=alert(1)>`;
 
-    // Creating custom Policy
+    // Creating a trusted type
    if (window.trustedTypes && trustedTypes.createPolicy) { // Feature testing
-    }
+   }
+
+    document.getElementById('martina').innerHTML = dangerousText;
 </script>
 <script src="js/legitimate.js"></script>
 </body>
